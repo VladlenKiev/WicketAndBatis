@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="jdbc.properties"> <!--ссылка на файл со свойствами(ссылка на СУБД, логин, пароль и тп.)-->
+    </properties>
+
+    <typeAliases>
+        <typeAlias alias="Subscriber" type="com.company.model.Subscriber"/>
+    </typeAliases>
+
+    <environments default="development"><!--в данном блоке настраиваются подключения к БД-->
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driverClassName}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers><!--в данном блоке необходимо описать маперы, которые используются в проекте-->
+      <!--  <mapper class="com.company.mapper.SubscriberMapper"/>-->
+        <mapper resource="SubscriberMapper.xml"/>
+       <!-- <mapper class="kz.jazzsoft.mapper.TariffMapper"/>
+        <mapper class="kz.jazzsoft.mapper.PaymentMapper"/>-->
+    </mappers>
+</configuration>
